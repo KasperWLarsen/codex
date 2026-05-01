@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+  <Id>6bf534f0-c1c5-4f87-9837-918efb4d0df8</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Intern frokost</ProviderName>
+  <DefaultLocale>da-DK</DefaultLocale>
+  <DisplayName DefaultValue="Frokostbestilling"/>
+  <Description DefaultValue="Bestil frokost til en godkendt kantine eller Boardroom fra en Outlook-aftale."/>
+  <IconUrl DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+  <HighResolutionIconUrl DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+  <SupportUrl DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+  <AppDomains>
+    <AppDomain>https://kasperwlarsen.github.io/codex/0</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.6"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+        <RequestedHeight>520</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+    <Form xsi:type="ItemEdit">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read"/>
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Edit"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.6">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+            <OfficeTab id="TabDefault">
+      <Group id="Lunch.Group.Organizer">
+                <Label resid="Group.Label"/>
+                <Control xsi:type="Button" id="Lunch.OpenPane.Organizer">
+                  <Label resid="Taskpane.Button.Label"/>
+                  <Supertip>
+                    <Title resid="Taskpane.Button.Label"/>
+                    <Description resid="Taskpane.Button.Description"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16"/>
+                    <bt:Image size="32" resid="Icon.32"/>
+                    <bt:Image size="80" resid="Icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+          <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="Lunch.Group.Attendee">
+                <Label resid="Group.Label"/>
+                <Control xsi:type="Button" id="Lunch.OpenPane.Attendee">
+                  <Label resid="Taskpane.Button.Label"/>
+                  <Supertip>
+                    <Title resid="Taskpane.Button.Label"/>
+                    <Description resid="Taskpane.Button.Description"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16"/>
+                    <bt:Image size="32" resid="Icon.32"/>
+                    <bt:Image size="80" resid="Icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+        <bt:Image id="Icon.32" DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+        <bt:Image id="Icon.80" DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://kasperwlarsen.github.io/codex/"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="Group.Label" DefaultValue="Frokost"/>
+        <bt:String id="Taskpane.Button.Label" DefaultValue="Bestil frokost"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="Taskpane.Button.Description" DefaultValue="Åbn frokostbestilling for den valgte aftale."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
